@@ -5,7 +5,8 @@ import WordDisplay from './Components/WordDisplay';
 function App() {
 
   const word = 'hello';
-  const form = document.querySelector('form');
+  let numGuesses = 9;
+  // const form = document.querySelector('form');
   //is this properly declare? why not use const? arrow function for 'this' weirdness?
   //tried to use this but didnt work
   // is .val() jquery?
@@ -17,13 +18,23 @@ function App() {
   }
 
   function testLetter(guess, word) {
-    word.search(guess) >= 0 ? console.log('yes') : console.log('wrong')
+    word.search(guess) >= 0 ? console.log('yes') : guessWrong();
+  }
+  //How am I going to send this to remove the class on the letter-box <p>?
+  function guessedRight() {
+
+  }
+
+  function guessWrong() {
+    numGuesses--;
+    console.log(numGuesses)
   }
 
   return (
 		<main className="App">
 			<header className="App-header">
 				<h2>Hang-Man!</h2>
+        <h3>You have {numGuesses} guesses left!</h3>
 			</header>
 			<div className="game-view">
 
